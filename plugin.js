@@ -37,7 +37,7 @@
         // Add a button that opens a window
         editor.addButton("youtube", {
             icon: true,
-            image: url + "/img/youtube.gif",
+            image: url + "/img/vid-icon.gif",
             tooltip:  tinymce.util.I18n.translate("YouTube Tooltip"),
             onclick: showDialog,
             onPostRender: function () {

@@ -33,6 +33,17 @@
         return match && match[2].length === 11 ? match[2] : false;
     }
 
+    /*
+     * Return dailymotion id
+     * @param url {string}
+     * @return {string|boolean}
+     */
+    function dailymotionId(url) {
+        var match = url.match((/^.*(dai\.ly\/|video\/)([^#\&\?]*).*/));
+        return match && match[2].length >= 2 ? match[2] : false;
+    }
+
+
     /**
      * Return YouTube convertUrl URL
      * @param url {string}
@@ -40,36 +51,30 @@
      * @returns {string}
      */
     function convertUrl(url) {
-        var id = youtubeId(url);
-        if (url && id) {
-            //url = "https://www.youtube.com/" + (iframe ? "embed/" : "v/") + youtubeId(url);
-            url = "https://www.youtube.com/" + "embed/" + youtubeId(url);
+        var idYoutube = youtubeId(url);
+        var idDailymotion = dailymotionId(url);
+        if (idYoutube) {
+            return 'https://www.youtube.com/embed/' + idYoutube;
         }
-        return url;
+        if (idDailymotion){
+            return 'http://www.dailymotion.com/embed/video/' + idDailymotion;
+        }
+        return null;
     }
 
     /**
      * Format HTML
-     * @param iframe {boolean}
      * @param width {number}
      * @param height {number}
      * @param data {string}
      * @returns {string}
      */
-    function dataToHtml(iframe, width, height, data) {
+    function dataToHtml(width, height, data) {
         var dim, code;
         if (data) {
             dim = 'width="' + width + '" height="' + height + '"';
-            if (iframe) {
-                code = '<iframe src="' + data + '" ' + dim + ' frameborder="0" allowfullscreen class="embed-responsive-item">&nbsp;</iframe>';
-            } else {
-                code =  '<div class="youtube">' +
-                            '<object type="application/x-shockwave-flash" ' + dim + ' data="' + data + '&modestbranding=1">' +
-                                '<param name="movie" value="' + data + '&modestbranding=1" />' +
-                                '<param name="wmode" value="transparent" />' +
-                            '</object>' +
-                        '</div>';
-            }
+            code = '<iframe src="' + data + '" ' + dim + ' frameborder="0" allowfullscreen class="embed-responsive-item">&nbsp;</iframe>';
+
         }
         return code;
     }
@@ -81,7 +86,6 @@
     function insert() {
         var result,
             options = "",
-            html5State = $("#video").is(":checked"),
             youtubeAutoplay = $("#youtubeAutoplay").is(":checked"),
             youtubeREL = $("#youtubeREL").is(":checked"),
             youtubeHD = $("#youtubeHD").is(":checked"),
@@ -91,6 +95,7 @@
 
         //SELECT Include related videos
         //var relvideo = document.getElementById("youtubeREL");
+        /*
         if (youtubeREL) {
             options += "?rel=1";
         }else{
@@ -103,22 +108,22 @@
             options += "&hd=1";
         }else{
             options += "&hd=0";
-        }
+        }*/
         // Youtube Autoplay
         if (youtubeAutoplay) {
-            options += "&autoplay=1";
+            options += "?autoplay=1";
         }
         if (newYouTubeUrl) {
             // Insert the contents from the input into the document
             //result = dataToHtml(html5State, width, height, newYouTubeUrl + (html5State ? "" : options));
-            result = dataToHtml(html5State, width, height, newYouTubeUrl + options);
+            result = dataToHtml(width, height, newYouTubeUrl + options);
         }
         return result;
     }
 
     function preview() {
         $("#preview").html(
-            dataToHtml(true, 420, 315, convertUrl($('#youtubeID').val()))
+            dataToHtml(420, 315, convertUrl($('#youtubeID').val()))
         );
     }
 

@@ -1,7 +1,7 @@
 Plugin youtube for TinyMCE 4
 ======================
 
-Insert YouTube video W3C valid with optionnals (HD, similar vidéos)
+Insert YouTube (and dailymotion) video W3C valid with optionnals (HD, similar vidéos)
 
 
 Authors

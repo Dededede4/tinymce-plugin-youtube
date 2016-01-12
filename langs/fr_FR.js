@@ -1,8 +1,8 @@
 tinymce.addI18n('fr_FR',{
-    'YouTube Tooltip'   : "YouTube",
-	'YouTube Title'     : "Insertion d'une vidéo youtube",
-	'Youtube URL'	    : 'URL YouTube',
-	'Youtube ID'        : 'Format du lien de partage : http://youtu.be/xxxxxxxx ou http://www.youtube.com/watch?v=xxxxxxxx',
+    'YouTube Tooltip'   : "Vidéo web",
+	'YouTube Title'     : "Insertion d'une vidéo web",
+	'Youtube URL'	    : 'URL',
+	'Youtube ID'        : 'Copiez l\'URL de la vidéo',
 	'width'			    : 'Largeur',
 	'height'		    : 'Hauteur',
 	'autoplay'		    : 'Autoplay',

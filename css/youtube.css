@@ -4,7 +4,7 @@ body{
 a:focus,a:active{outline:0;}
 a img{border:none;}
 #preview{ 
-	background-image: url(../img/Google-YouTube-128.png);
+	background-image: url(../img/vid-icon.png);
 	background-repeat: no-repeat;
 	background-position: center center;
 	height: 325px;
