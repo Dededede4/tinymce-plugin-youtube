@@ -2,7 +2,7 @@ tinymce.addI18n('fr_FR',{
     'YouTube Tooltip'   : "Vidéo web",
 	'YouTube Title'     : "Insertion d'une vidéo web",
 	'Youtube URL'	    : 'URL',
-	'Youtube ID'        : 'Copiez l\'URL de la vidéo',
+	'Youtube ID'        : 'Copiez l\'URL de la vidéo (youtube/dailymotion uniquement)',
 	'width'			    : 'Largeur',
 	'height'		    : 'Hauteur',
 	'autoplay'		    : 'Autoplay',
